@@ -1,0 +1,20 @@
+table, td, th {
+    border: 1px solid black ;
+    
+}
+table {
+    width: 100%;
+}
+.daftar {
+    margin-left:  50px;
+    margin-right:  50px;
+}
+
+.delete{
+    background-color: red;
+    margin-left: 5px;
+    color: white;
+}
+.action{
+    padding: 10px;
+}
