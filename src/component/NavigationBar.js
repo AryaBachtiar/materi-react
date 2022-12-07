@@ -14,6 +14,8 @@ export default function NavigationBar() {
   const [tahunterbit, setTahunterbit] = useState("");
   const [pengarang, setPengarang] = useState("");
 
+  
+  // Untuk Menampilkan Table
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
@@ -35,10 +37,12 @@ export default function NavigationBar() {
       .catch((error) => {
         alert("Terjadi Kesalahan " + error);
       });
+      
   };
 
   return (
     <div>
+      {/* Bagian Navbar  */}
       <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
@@ -46,6 +50,7 @@ export default function NavigationBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
+              {/* Agar Bisa MEnambahkan Jika di Klik  */}
               <li className="nav-item">
                 <button className="btn" onClick={handleShow}>
                   Tambah Buku
@@ -68,10 +73,12 @@ export default function NavigationBar() {
             
               <img src="https://64.media.tumblr.com/1e904f7848e1d3b0f1953c1a7bfc1f26/tumblr_mkydxbyuQ81s5jjtzo1_500.gif" alt="" 
               style={{width:100}}/>
-            
           </Navbar.Collapse>
         </Container>
       </Navbar>
+{/* End Navbar */}
+
+      {/* Untuk Menambahkan data */}
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Add Buku</Modal.Title>
@@ -96,9 +103,11 @@ export default function NavigationBar() {
               <Form.Label>Pengarang</Form.Label>
               <Form.Control type="text" placeholder="Pengarang" onChange={(e) => setPengarang(e.target.value)} required />
             </Form.Group>
+            {/* Button yang bekerja jika di Close akan kembali/tidak jadi di tambahkan  */}
             <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
+          {/* Button akan menambahkan data jika Di klik butoon nya dan akan langsung meambahkan data yang telah diisi  */}
           <Button variant="primary" type="submit" >
             Save 
           </Button>

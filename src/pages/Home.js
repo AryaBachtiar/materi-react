@@ -6,6 +6,7 @@ export default function Home() {
 
     const [buku, setBuku] = useState([]);
 
+    // Untuk menampilkan semua data yang ada di page awal(HOME) 
     const getAll = () => {
         axios
         .get("http://localhost:8000/daftarBuku")
@@ -21,6 +22,7 @@ export default function Home() {
         getAll();
     }, []);
 
+    // Untuk menghapus data yang ada di dalam table 
     const deleteUser = async (id) => {
         axios.delete("http://localhost:8000/daftarBuku/" + id);
         alert("User Berhasil dihapus Coy");

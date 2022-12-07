@@ -11,9 +11,9 @@ function App() {
     <div className="App">
       <div className='center'>
         <NavigationBar />
-      
         <BrowserRouter>
         <main>
+          {/* Ini untuk menyalakan sistem didalam home dan jika di edit */}
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/edit/:id" component={Edit} exact />

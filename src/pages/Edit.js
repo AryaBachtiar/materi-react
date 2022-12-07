@@ -4,7 +4,7 @@ import { InputGroup, Form } from 'react-bootstrap'
 import { useHistory, useParams} from 'react-router-dom'
 
 export default function Edit() {
-
+//Stage berfungsi untuk menyimpan data semantara
     const param = useParams();
     const [judul, setJudul] = useState("");
     const [deskripsi, setDeskripsi] = useState("");
@@ -13,6 +13,7 @@ export default function Edit() {
 
     const history = useHistory();
 
+    // Untuk Menmapilkan Data yang telah ditamabahkan 
   useEffect(() => {
     axios
     .get("http://localhost:8000/daftarBuku/" + param.id)
@@ -28,6 +29,7 @@ export default function Edit() {
     });
   }, []);
 
+//   Bagian Untuk mengedit Data yang ada di dalam table
   const submitActionHandler = async (event) => {
     event.preventDefault();
 
@@ -48,6 +50,7 @@ export default function Edit() {
     });
   };
 
+//   Untuk Meanmpilkan dan mengedit data yang ada dalam table 
   return (
     <div className="edit mx-5">
         <div className="container my-5">
@@ -105,6 +108,8 @@ export default function Edit() {
             </InputGroup>
         </div>
         </div>
+        
+        {/* Tombol Save untuk menconfirmasi jika ingin di edit */}
         <div className="d-flex justify-content-end align-center mt-2">
             <button className="buton btn" type="submit">
                 Save
