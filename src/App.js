@@ -4,7 +4,8 @@ import { BrowserRouter, Switch,Route} from "react-router-dom"
 import NavigationBar from './component/NavigationBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/Home';
-import Edit from "./pages/Edit"
+import Edit from "./pages/Edit";
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact />
             <Route path="/edit/:id" component={Edit} exact />
+            <Route path="/login" component={Login} exact />
           </Switch>
         </main>
         </BrowserRouter>

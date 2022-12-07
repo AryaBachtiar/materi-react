@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { InputGroup, Form } from 'react-bootstrap'
 import { useHistory, useParams} from 'react-router-dom'
+import Swal from 'sweetalert2';
 
 export default function Edit() {
 //Stage berfungsi untuk menyimpan data semantara
@@ -32,7 +33,7 @@ export default function Edit() {
 //   Bagian Untuk mengedit Data yang ada di dalam table
   const submitActionHandler = async (event) => {
     event.preventDefault();
-
+   
     await axios 
     .put("http://localhost:8000/daftarBuku/" + param.id, {
         judul:judul,
@@ -41,9 +42,26 @@ export default function Edit() {
         pengarang:pengarang
     })
     .then(() => {
-        alert("Berhasil Menambahkan Data Ygy!");
-        history.push("/");
-        window.location.reload();
+        Swal.fire({
+            title: 'Do you want to save the changes?',
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: 'Save',
+            denyButtonText: `Don't save`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            setTimeout(() => {
+                history.push("/");
+                window.location.reload();
+              
+            }, 1500);
+            if (result.isConfirmed) {
+              Swal.fire('Saved!', '', 'success')
+            } else if (result.isDenied) {
+              Swal.fire('Anda Tidak Merubah Data Apapun', '', 'info')
+            }
+          })
+        
     })
     .catch((error) => {
         alert("Terjadi Kesalahan: " + error);
@@ -108,7 +126,7 @@ export default function Edit() {
             </InputGroup>
         </div>
         </div>
-        
+
         {/* Tombol Save untuk menconfirmasi jika ingin di edit */}
         <div className="d-flex justify-content-end align-center mt-2">
             <button className="buton btn" type="submit">

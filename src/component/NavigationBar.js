@@ -6,6 +6,8 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
 import { Modal, Form, InputGroup } from "react-bootstrap";
+import swal from 'sweetalert';
+import { useHistory } from "react-router-dom";
 
 export default function NavigationBar() {
   const [show, setShow] = useState(false);
@@ -14,6 +16,8 @@ export default function NavigationBar() {
   const [tahunterbit, setTahunterbit] = useState("");
   const [pengarang, setPengarang] = useState("");
 
+  const history = useHistory();
+
   
   // Untuk Menampilkan Table
   const handleClose = () => setShow(false);
@@ -21,7 +25,9 @@ export default function NavigationBar() {
 
   const addUser = async (e) => {
     e.preventDefault();
+    swal("Berhasil Menambahkan ", "You clicked the button!", "success");
 
+   
     const data = {
       judul: judul,
       deskripsi: deskripsi,
@@ -32,12 +38,20 @@ export default function NavigationBar() {
     await axios
       .post("http://localhost:8000/daftarBuku", data)
       .then(() => {
-        window.location.reload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+        
       })
       .catch((error) => {
         alert("Terjadi Kesalahan " + error);
       });
       
+  };
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
   };
 
   return (
@@ -51,11 +65,26 @@ export default function NavigationBar() {
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
               {/* Agar Bisa MEnambahkan Jika di Klik  */}
+
+              {localStorage.getItem("id") !== null ? (
+                <>
               <li className="nav-item">
                 <button className="btn" onClick={handleShow}>
                   Tambah Buku
                 </button>
               </li>
+              <li className="nav-item float-right">
+                <a className="btn" onClick={logout}>Logout
+                </a> 
+              </li>
+                </>
+              ) : (
+              <li className="nav-item float-right">
+                <a className="btn" href="/login">
+                  Login
+                </a>
+              </li>
+              )}
               <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                 <NavDropdown.Item href="#action/3.2">
@@ -108,7 +137,7 @@ export default function NavigationBar() {
             Close
           </Button>
           {/* Button akan menambahkan data jika Di klik butoon nya dan akan langsung meambahkan data yang telah diisi  */}
-          <Button variant="primary" type="submit" >
+          <Button variant="primary" type="submit">
             Save 
           </Button>
           </Form>

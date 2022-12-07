@@ -1,32 +1,18 @@
 {
+  "users": [
+    {
+      "id": 1,
+      "username": "User",
+      "password": "123"
+    }
+  ],
   "daftarBuku": [
     {
-      "judul": "Si Kancil",
-      "deskripsi": "Si Kancil Ini mencuri Timun",
-      "tahunterbit": "2022-12-06",
-      "pengarang": "Ian",
-      "id": 1
-    },
-    {
-      "judul": "Keong Mas",
-      "deskripsi": "Cerita Rakyat Keong Mas yang melegenda",
-      "tahunterbit": "2022-12-09",
-      "pengarang": "Yanto",
-      "id": 2
-    },
-    {
-      "judul": "Harry Potter",
-      "deskripsi": "Harry Potter yang mengisahkan sekolah sihir",
-      "tahunterbit": "2022-12-06",
-      "pengarang": "Wille",
-      "id": 3
-    },
-    {
-      "judul": "Kisah Tutu",
+      "judul": "Kisah Tutu si beruang",
       "deskripsi": "Penuh dengan kata\" TOXIC",
-      "tahunterbit": "2022-12-05",
-      "pengarang": "OREN",
-      "id": 6
+      "tahunterbit": "2022-12-09",
+      "pengarang": "Oren",
+      "id": 1
     }
   ]
 }
