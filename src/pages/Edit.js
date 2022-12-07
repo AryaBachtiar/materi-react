@@ -43,7 +43,7 @@ export default function Edit() {
     })
     .then(() => {
         Swal.fire({
-            title: 'Do you want to save the changes?',
+            title: 'Apakah kamu ingin mengubah Data?',
             showDenyButton: true,
             showCancelButton: true,
             confirmButtonText: 'Save',
